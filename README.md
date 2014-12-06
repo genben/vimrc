@@ -18,6 +18,8 @@ cd ~/vimfiles
 Installation on Linux
 ---------------------
 
+Install Git
+
 Clone Git repository somewhere:
 
 ``` bash
@@ -27,5 +29,23 @@ git clone git://github.com/genben/vimrc vimrc
 Run installation script:
 
 ``` bash
-vim-create-links.bat
+chmod +x vim-create-links.sh
+./vim-create-links.bat
 ```
+
+Install Vim
+``` bash
+sudo apt-get install vim
+```
+
+Install Vundle
+``` bash
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+Start VIM and install all plugins
+``` bash
+:PluginInstall
+```
+
+Restart VIM
