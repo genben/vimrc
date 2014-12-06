@@ -289,14 +289,26 @@ if has("gui_running")
 " autocmd vimenter * if !argc() | NERDTree | endif
 
   set background=dark
-  "colorscheme molokai
   colorscheme solarized 
   let g:solarized_contrast = "high"
 
 else
 " терминал?
   "colorscheme myterm
-  colorscheme molokai
+  " colorscheme molokai
+
+  if has ('unix')
+    " This assumes that terminal emulator itself uses theme solarized
+	" Otherwise it will not work
+    set background=dark
+    let g:solarized_contrast = "high"
+    " set t_Co=256
+    " let g:solarized_termcolors=256
+    colorscheme solarized 
+  else
+    colorscheme molokai
+  endif
+
 "  colorscheme desert
 endif
 
