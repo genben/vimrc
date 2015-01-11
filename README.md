@@ -48,4 +48,11 @@ Start VIM and install all plugins
 :PluginInstall
 ```
 
+Build vimproc
+```bash
+cd ~/.vim/bundle/vimproc.vim
+make
+```
+
+
 Restart VIM
