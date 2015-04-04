@@ -312,7 +312,7 @@ else
 "  colorscheme desert
 endif
 
-tab sball
+"tab sball
 set switchbuf=useopen
 
 " отключаем пищалку и мигание
@@ -521,6 +521,12 @@ autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 
 " --- HTML ---
 " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" --- VIM ---
+autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" --- CPP ---
+autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 " --- template language support (SGML / XML too) ---
