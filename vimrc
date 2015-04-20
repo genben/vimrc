@@ -1,5 +1,8 @@
 ﻿set nocompatible              " be iMproved, required
 
+" Disable match paren (which is slow (c) biggena)
+let loaded_matchparen = 1
+
 " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 " across (heterogeneous) systems easier.
 if has('win32') || has('win64')
@@ -41,10 +44,15 @@ if has("gui_running")
     if has ('win32')
         set guifont=Consolas:h11:cANSI
     else
-        set guifont=Ubuntu\ Mono\ 12
+        " set guifont=Ubuntu\ Mono\ 12
+        " set guifont=Monospace\ Regular\ 11
+        " set guifont=Inconsolata\ 11
+        set guifont=Consolas\ 12
     endif
 else
 " терминал?
+  " Enable mouse control in console (selects, clicks etc)
+  set mouse=a
 endif
 
 
@@ -71,7 +79,7 @@ Plugin 'justinmk/vim-sneak'             " Jump to any location specified by two 
 
 
 "------------------=== Other ===----------------------
-" Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
 "Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 "Plugin 'rosenfeld/conque-term'      	" Consoles as buffersgvim
 Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
@@ -109,6 +117,12 @@ Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indent levels (use 
 " --- CSS, LESS ---
 Plugin 'groenewege/vim-less'       " Syntax highlight for LESS
 " Plugin 'skammer/vim-css-color'     " Display CSS color inline
+
+" --- Javascript ---
+" Plugin 'wookiehangover/jshint.vim'  " Javascript syntax checker (Edit: it doesn't work. When throws VIM error 'Function call depth is higher than 'maxfuncdepth'' (c) biggena
+" Plugin 'Shutnik/jshint2.vim'          " (Edit: it doesn't work on Windows because it incorrectly calls shell commands)
+Plugin 'scrooloose/syntastic.git'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -194,7 +208,7 @@ map <C-Tab> <c-w>w
 " -----------------------------------------
 " Unite configuration
 " -----------------------------------------
-let g:unite_source_history_yank_enable = 1
+" let g:unite_source_history_yank_enable = 1
 " let g:unite_winheight = 10
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -205,7 +219,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert buffer file_rec<cr>
 " nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 " nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
+" nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
 
 " Search recursively in files (super search)
@@ -214,6 +228,8 @@ nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
 " nnoremap <silent> <leader>ss :Unite -silent grep:**:<CR>
 " nnoremap <silent> <leader>ss :Unite -no-split -toggle -silent -auto-preview -buffer-name=filesearch grep:.<CR>
 nnoremap <silent> <leader>ss :Unite -no-quit -toggle -silent -auto-highlight -buffer-name=filesearch grep:.<CR>
+
+nnoremap <silent> <leader>sv :Unite -silent vimgrep:\c**:<CR>
 
 " Search in current file (search local)
 nnoremap <silent> <leader>sl :Unite -no-quit -silent -toggle -auto-resize -auto-highlight -buffer-name=search vimgrep:%:<CR>
@@ -272,9 +288,9 @@ set clipboard=unnamed
 set ruler
 set completeopt-=preview
 set gcr=a:blinkon0
-if has("gui_running")
+" if has("gui_running")
   set cursorline
-endif
+" endif
 set ttyfast
 
 " включить подсветку кода
@@ -489,6 +505,28 @@ let g:pymode_run = 0
 let g:jedi#popup_select_first = 0
 
 
+"=====================================================
+" Syntastic settings
+"=====================================================
+" Note, it requires node.js + jshint installed globally
+"   Install jshint globally: 'npm install jshint -g'
+let g:syntastic_jslint_checkers=['jshint']
+" let g:syntastic_check_on_open=1
+" let g:syntastic_enable_signs=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+
+" Disable Syntastic on python files because 'pymode' checks the syntax
+autocmd FileType python let g:syntastic_check_on_wq = 0
+
 
 "=====================================================
 " Languages support
@@ -502,6 +540,9 @@ let g:jedi#popup_select_first = 0
 " Helpful commands:
 " :retab          - Change all existing tab characters to spaces
 "
+"
+set wildignore+=*.so,*.a,*.o,*.pyc
+
 
 set autoindent
 
@@ -528,6 +569,9 @@ autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 " --- CPP ---
 autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
+" ---- automake ---
+autocmd FileType automake setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
+
 
 " --- template language support (SGML / XML too) ---
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,less,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -544,3 +588,6 @@ autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/sc
 " --- CSS ---
 " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+" --- MiaRec trace files ---
+au BufRead,BufNewFile *.log setfiletype miarec_trace
