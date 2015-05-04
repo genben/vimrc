@@ -227,7 +227,7 @@ nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
 " nnoremap <silent> <leader>ss :Unite -silent vimgrep:**:<CR>
 " nnoremap <silent> <leader>ss :Unite -silent grep:**:<CR>
 " nnoremap <silent> <leader>ss :Unite -no-split -toggle -silent -auto-preview -buffer-name=filesearch grep:.<CR>
-nnoremap <silent> <leader>ss :Unite -no-quit -toggle -silent -auto-highlight -buffer-name=filesearch grep:.<CR>
+nnoremap <silent> <leader>ss :Unite -no-quit -toggle -no-silent -auto-highlight -buffer-name=filesearch grep:.<CR>
 
 nnoremap <silent> <leader>sv :Unite -silent vimgrep:\c**:<CR>
 
@@ -277,6 +277,8 @@ endfunction
 let g:ctrlp_match_window = 'bottom,order:ttb,min:3,max:10,result:10'
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_extensions = ['tag', 'buffertag']
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 " Search in tags
 nnoremap <leader>t :<C-u>CtrlPTag<cr>
 " Search in tags of all opened buffers
@@ -313,7 +315,7 @@ else
   "colorscheme myterm
   " colorscheme molokai
 
-  if has ('unix')
+  "if has ('unix')
     " This assumes that terminal emulator itself uses theme solarized
 	" Otherwise it will not work
     set background=dark
@@ -321,9 +323,9 @@ else
     " set t_Co=256
     " let g:solarized_termcolors=256
     colorscheme solarized 
-  else
-    colorscheme molokai
-  endif
+  "else
+  "  colorscheme molokai
+  "endif
 
 "  colorscheme desert
 endif
@@ -476,7 +478,7 @@ let g:pymode_doc_key = 'K'
 " проверка кода
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pylint,pep8"
-let g:pymode_lint_ignore="E501,W601,C0110,E712,W391,W0401"
+let g:pymode_lint_ignore="E303,E501,W601,C0110,E712,W391,W0401,E116,C901,E711"
 " Show error message if cursor placed at the error line
 let g:pymode_lint_message = 0
 " провека кода после сохранения
