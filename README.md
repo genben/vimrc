@@ -13,14 +13,13 @@ Install Git
 Clone Git repository somewhere:
 
 ``` bash
-git clone git://github.com/genben/vimrc vimrc
+git clone https://github.com/genben/vimrc
 cd vimrc
 ```
 
 Run installation script:
 
 ``` bash
-chmod +x vim-create-links.sh
 ./vim-create-links.sh
 ```
 
@@ -31,7 +30,8 @@ sudo apt-get install vim
 
 Install Vundle
 ``` bash
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cd  ~/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim
 ```
 
 Start VIM and install all plugins
@@ -55,7 +55,7 @@ Install Git
 
 Clone Git repository somewhere:
 ``` bash
-git clone git://github.com/genben/vimrc vimrc
+git clone https://github.com/genben/vimrc
 cd vimrc
 ```
 
