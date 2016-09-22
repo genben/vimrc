@@ -1,7 +1,7 @@
 ﻿set nocompatible              " be iMproved, required
 
 " Disable match paren (which is slow (c) biggena)
-let loaded_matchparen = 1
+" let loaded_matchparen = 1
 
 " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 " across (heterogeneous) systems easier.
@@ -206,6 +206,12 @@ nnoremap <silent> <C-Down> <c-w>j
 map <C-Tab> <c-w>w
 
 " -----------------------------------------
+" Override Y to yank from the current cursort to the end of line 
+" instead of default behavior (yank whole string)
+" -----------------------------------------
+nnoremap Y y$
+
+" -----------------------------------------
 " Unite configuration
 " -----------------------------------------
 " let g:unite_source_history_yank_enable = 1
@@ -307,8 +313,8 @@ if has("gui_running")
 " autocmd vimenter * if !argc() | NERDTree | endif
 
   set background=dark
-  colorscheme solarized 
   let g:solarized_contrast = "high"
+  colorscheme solarized 
 
 else
 " терминал?
@@ -329,6 +335,9 @@ else
 
 "  colorscheme desert
 endif
+
+" Load ToggleBG plugin for solarized
+so $HOME/.vim/autoload/togglebg.vim
 
 "tab sball
 set switchbuf=useopen
