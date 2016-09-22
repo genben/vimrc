@@ -1,0 +1,24 @@
+" отключаем пищалку и мигание
+" set visualbell t_vb= 
+" set novisualbell    
+
+set incsearch	     " show where search pater typed so far matches
+set hlsearch	     " highlight matches with last search pattern
+set ignorecase       " Ignore case in search
+set smartcase        " ignore case in search if there are no CAPITAL letter in search term
+
+set clipboard=unnamed
+
+let mapleader = ','
+
+
+set showmode   " message on status line to show current mode
+
+" Switch between current and last buffer
+nnoremap <leader>b :action VimFilePrevious<CR>
+
+nmap <leader>ci :action CommentByLineComment<CR>
+
+
+
+
