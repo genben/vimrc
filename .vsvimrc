@@ -1,0 +1,10 @@
+" отключаем пищалку и мигание
+set visualbell t_vb= 
+set novisualbell    
+
+set incsearch	     " инкреминтируемый поиск
+set hlsearch	     " подсветка результатов поиска
+set ignorecase       " Ignore case in search
+set smartcase        " ignore case in search if there are no CAPITAL letter in search term
+
+:set clipboard=unnamed
