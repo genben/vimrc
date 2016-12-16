@@ -485,8 +485,8 @@ let g:pymode_rope_complete_on_dot = 0
 let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 " проверка кода
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pylint,pep8"
+let g:pymode_lint = 0
+let g:pymode_lint_checker = "flake8,pep8"
 let g:pymode_lint_ignore="E303,E501,W601,C0110,E712,W391,W0401,E116,C901,E711"
 " Show error message if cursor placed at the error line
 let g:pymode_lint_message = 0
@@ -524,6 +524,7 @@ let g:jedi#popup_select_first = 0
 let g:syntastic_jslint_checkers=['jshint']
 " let g:syntastic_check_on_open=1
 " let g:syntastic_enable_signs=1
+let g:syntastic_python_checkers = ['flake8','pep8']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
