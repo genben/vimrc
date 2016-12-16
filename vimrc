@@ -44,10 +44,10 @@ if has("gui_running")
     if has ('win32')
         set guifont=Consolas:h11:cANSI
     else
-        " set guifont=Ubuntu\ Mono\ 12
+        set guifont=Ubuntu\ Mono\ 12
         " set guifont=Monospace\ Regular\ 11
         " set guifont=Inconsolata\ 11
-        set guifont=Consolas\ 12
+        " set guifont=Consolas\ 12
     endif
 else
 " терминал?
@@ -79,7 +79,8 @@ Plugin 'justinmk/vim-sneak'             " Jump to any location specified by two 
 
 
 "------------------=== Other ===----------------------
-Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plugin 'vim-airline/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plugin 'vim-airline/vim-airline-themes'   	    	" Themes for vim-airline
 "Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 "Plugin 'rosenfeld/conque-term'      	" Consoles as buffersgvim
 Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
