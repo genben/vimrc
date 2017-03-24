@@ -378,7 +378,7 @@ set tabstop=2
 set shiftwidth=2
 
 " On pressing tab, insert X spaces
-set expand
+set expandtab
 
 "  при переходе за границу в 80 символов в Ruby/Python/js/C/C++ подсвечиваем на темном фоне текст
 " augroup vimrc_autocmds
