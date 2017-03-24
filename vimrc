@@ -366,9 +366,19 @@ set guioptions-=m   " меню
 set guioptions-=T    " тулбар
 "set guioptions-=r   "  скроллбары
 
-" настройка на Tab
+" ---------------------------------------------
+" Global settings for TAB
+" ---------------------------------------------
 set smarttab
-set tabstop=4
+
+" show existing tab with X spaces width
+set tabstop=2
+
+" when indenting with '>', use X spaces
+set shiftwidth=2
+
+" On pressing tab, insert X spaces
+set expand
 
 "  при переходе за границу в 80 символов в Ruby/Python/js/C/C++ подсвечиваем на темном фоне текст
 " augroup vimrc_autocmds
