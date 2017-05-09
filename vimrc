@@ -75,7 +75,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
 Plugin 'majutsushi/tagbar'          	" Class/module browser
 " Plugin 'goldfeld/vim-seek'              " Seep monition (like f, but it expects two characters to be typed). Use 's'
-Plugin 'justinmk/vim-sneak'             " Jump to any location specified by two characters (multi-line)
+" Plugin 'justinmk/vim-sneak'             " Jump to any location specified by two characters (multi-line)
 
 
 "------------------=== Other ===----------------------
@@ -83,7 +83,7 @@ Plugin 'vim-airline/vim-airline'   	    	" Lean & mean status/tabline for vim
 Plugin 'vim-airline/vim-airline-themes'   	    	" Themes for vim-airline
 "Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 "Plugin 'rosenfeld/conque-term'      	" Consoles as buffersgvim
-Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
+" Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 Plugin 'scrooloose/nerdcommenter'       " Easy commenting of lines, blockes
 Plugin 'kien/ctrlp.vim'                 " Ctrl-P (Fuzzy search by filename)
 
@@ -91,11 +91,11 @@ Plugin 'kien/ctrlp.vim'                 " Ctrl-P (Fuzzy search by filename)
 " Plugin 'xolox/vim-session'              " Vim Sessions
 " Plugin 'jlanzarotta/bufexplorer'        " BufExplorer
 " Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors like in SublimeText (use Ctrl+n)
-Plugin 'Shougo/vimproc.vim'             " Vimproc plugin (required by Unite.vim)
-Plugin 'Shougo/unite.vim'               " Unite.vim plugin
+" Plugin 'Shougo/vimproc.vim'             " Vimproc plugin (required by Unite.vim)
+" Plugin 'Shougo/unite.vim'               " Unite.vim plugin
 " Plugin 'tsukkee/unite-tag'              " Support searching in tags for Unite.vim (c) it is disabled because it is VEEERY slow
 
-Plugin 'rking/ag.vim'                   " Ag (The Silver Searcher)
+" Plugin 'rking/ag.vim'                   " Ag (The Silver Searcher)
 "--------------=== Snippets support ===---------------
 " Plugin 'garbas/vim-snipmate'		" Snippets manager
 "Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
@@ -110,10 +110,10 @@ Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highligh
 " to autocmd CursortMovedI many times)
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 
-Plugin 'matze/vim-ini-fold'         " Fold expression for ini-like files
+" Plugin 'matze/vim-ini-fold'         " Fold expression for ini-like files
 
 "Plugin 'pangloss/vim-javascript'    " Javascript syntax and formatting (it seems this plugin causes issue with VIM, mode cannot be changed (c) biggena. Or may be this is the next plugin?)
-Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indent levels (use <leader>ig to toggle)
+" Plugin 'nathanaelkane/vim-indent-guides'  " Visually display indent levels (use <leader>ig to toggle)
 
 " --- CSS, LESS ---
 Plugin 'groenewege/vim-less'       " Syntax highlight for LESS
@@ -131,7 +131,7 @@ Plugin 'tpope/vim-fugitive'
 " ------------You Complete Me
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'jeaye/color_coded'
+" Plugin 'jeaye/color_coded'
 
 
 " All of your Plugins must be added before the following line
@@ -221,70 +221,8 @@ map <C-Tab> <c-w>w
 " -----------------------------------------
 nnoremap Y y$
 
-" -----------------------------------------
-" Unite configuration
-" -----------------------------------------
-" let g:unite_source_history_yank_enable = 1
-" let g:unite_winheight = 10
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-" nnoremap <leader>t :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<cr>
-" nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file_rec/async<cr>
-" nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file_rec<cr>
-" nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert buffer file_rec<cr>
-" nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
-" nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
-" nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
 
-" Search recursively in files (super search)
-" nnoremap <space>/ :Unite -silent -auto-preview vimgrep:**:<CR>
-" nnoremap <silent> <leader>ss :Unite -silent vimgrep:**:<CR>
-" nnoremap <silent> <leader>ss :Unite -silent grep:**:<CR>
-" nnoremap <silent> <leader>ss :Unite -no-split -toggle -silent -auto-preview -buffer-name=filesearch grep:.<CR>
-nnoremap <silent> <leader>ss :Unite -no-quit -toggle -no-silent -auto-highlight -buffer-name=filesearch grep:.<CR>
 
-nnoremap <silent> <leader>sv :Unite -silent vimgrep:\c**:<CR>
-
-" Search in current file (search local)
-nnoremap <silent> <leader>sl :Unite -no-quit -silent -toggle -auto-resize -auto-highlight -buffer-name=search vimgrep:%:<CR>
-
-" Use ag for search
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--line-number --smart-case --nogroup --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-" Src: https://github.com/Shougo/vimproc.vim/issues/150
-" let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  " let b:SuperTabDisabled=1
-
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-
-  " Use <C-x>, <C-v> to open file in horizontall or vertical split
-  " Use <C-t> to open file in new tab
-  imap <silent><buffer><expr> <C-x> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-  
-  " Toggle preview window when press <C-r>
-  nnoremap <silent><buffer><expr> <C-p>
-	          \ empty(filter(range(1, winnr('$')),
-	          \ 'getwinvar(v:val, "&previewwindow") != 0')) ?
-	          \ unite#do_action('preview') : ":\<C-u>pclose!\<CR>"
-
-  " Use ESC to close Unite window
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
 
 " =============================================
 " CtrlP configuration
@@ -299,6 +237,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 nnoremap <leader>t :<C-u>CtrlPTag<cr>
 " Search in tags of all opened buffers
 nnoremap <leader>st :<C-u>CtrlPBufTagAll<cr>
+
+" Find buffers
+nnoremap <leader>b :<C-u>CtrlPBuffer<cr>
 
 " On Windows copy/paste directly to system clipboard instead of * register
 set clipboard=unnamed
@@ -486,7 +427,7 @@ nnoremap <silent> [T :tfirst<CR>
 nnoremap <silent> ]T :tlast<CR>
 
 " Vim Sessions (use :SaveSession <name> and :OpenSession <name>)
-:let g:session_autosave = 'yes'
+" :let g:session_autosave = 'yes'
 
 " Ctags
 :nnoremap <f5> :!ctags -R<CR>
@@ -547,7 +488,8 @@ let g:syntastic_jslint_checkers=['jshint']
 let g:syntastic_python_checkers = ['flake8','pep8']
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{exists('g:loaded_syntastic_plugin')?SyntasticStatuslineFlag():''}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
