@@ -13,7 +13,7 @@ Install Git
 Clone Git repository somewhere:
 
 ``` bash
-git clone https://github.com/genben/vimrc
+git clone --recursive https://github.com/genben/vimrc
 cd vimrc
 ```
 
@@ -26,23 +26,6 @@ Run installation script:
 Install Vim
 ``` bash
 sudo apt-get install vim
-```
-
-Install Vundle
-``` bash
-cd  ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim
-```
-
-Start VIM and install all plugins
-``` bash
-:PluginInstall
-```
-
-Build vimproc
-```bash
-cd ~/.vim/bundle/vimproc.vim
-make
 ```
 
 
@@ -63,25 +46,4 @@ Run installation script (with admin rights).
 This will create soft links in C:\User\<user> directory
 ``` bash
 vim-create-links.bat
-```
-
-Install Vundle
-``` bash
-cd C:\User\<user>\.vim\bundle
-git clone https://github.com/gmarik/Vundle.vim
-```
-
-Start VIM and install all plugins.
-Important: if Cygwin is installed and it is in PATH before Mingw GIT, then it will cause problems.
-Solution: run GIT bash and from it run console vim instead of GVIM.
-``` bash
-:PluginInstall
-```
-
-
-Build vimproc.
-Start Visual Studio Command Prompt 2010+
-```bash
-cd C:\User\<user>\.vim\bundle\vimproc.vim
-nmake -f make_msvc.mak nodebug=1
 ```
