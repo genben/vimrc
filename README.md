@@ -29,6 +29,11 @@ sudo apt-get install vim
 ```
 
 
+Install YouCompleteMe.
+
+- Instructions: http://valloric.github.io/YouCompleteMe
+
+
 Restart VIM
 
 Installation on Windows
