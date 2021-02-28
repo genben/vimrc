@@ -43,7 +43,7 @@ Install Git
 
 Clone Git repository somewhere:
 ``` bash
-git clone https://github.com/genben/vimrc
+git clone --recursive https://github.com/genben/vimrc
 cd vimrc
 ```
 
