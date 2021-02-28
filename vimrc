@@ -126,15 +126,15 @@ Plugin 'scrooloose/syntastic.git'
 
 
 " --------------- GIT
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
-if has('win32') || has('win64')
-else
+" if has('win32') || has('win64')
+" else
   " ------------You Complete Me
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'rdnetto/YCM-Generator'
+  " Plugin 'Valloric/YouCompleteMe'
+  " Plugin 'rdnetto/YCM-Generator'
   " Plugin 'jeaye/color_coded'
-endif
+" endif
 
 
 " All of your Plugins must be added before the following line
